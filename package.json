@@ -1,0 +1,26 @@
+{
+  "name": "cubotino-web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview --host",
+    "test": "node test/run.mjs",
+    "model": "node tools/prepare-model.mjs suporte_cubo.glb"
+  },
+  "dependencies": {
+    "@babylonjs/core": "^9.32.0",
+    "@babylonjs/loaders": "^9.32.0",
+    "min2phase.js": "^0.0.4"
+  },
+  "devDependencies": {
+    "@gltf-transform/core": "^4.5.1",
+    "@gltf-transform/extensions": "^4.5.1",
+    "@gltf-transform/functions": "^4.5.1",
+    "draco3dgltf": "^1.5.9",
+    "meshoptimizer": "^1.3.0",
+    "vite": "^8.3.5"
+  }
+}

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>CUBOTino Web</title>
+  <link rel="icon" href="data:," />
+</head>
+<body>
+  <header>
+    <h1>CUBOTino <span>Web</span></h1>
+    <span id="status" role="status">Carregando…</span>
+  </header>
+
+  <main>
+    <section id="stage">
+      <canvas id="view" aria-label="Cubo 3D e robô"></canvas>
+      <div id="player">
+        <button id="b-reset" title="Início">⏮</button>
+        <button id="b-play" title="Executar / Pausar">▶</button>
+        <button id="b-step" title="Um passo">⏭</button>
+        <label>Vel. <input id="speed" type="range" min="0.25" max="4" step="0.25" value="1" /></label>
+        <progress id="prog" max="100" value="0"></progress><span id="pct">0%</span>
+      </div>
+    </section>
+
+    <aside>
+      <h2>1 · Cubo</h2>
+      <div id="net" aria-label="Planificação do cubo"></div>
+      <div id="palette"></div>
+      <div class="row">
+        <button id="b-scan">📷 Webcam</button>
+        <button id="b-random">🎲 Aleatório</button>
+        <button id="b-clean">Resolvido</button>
+        <button id="b-empty">Esvaziar</button>
+      </div>
+      <label class="chk"><input type="checkbox" id="scramble" /> Modo embaralhar (o robô embaralha o cubo)</label>
+
+      <h2>2 · Solução</h2>
+      <button id="b-solve" class="primary">Resolver</button>
+      <pre id="out">Monte o cubo, ou leia pela webcam, e clique em Resolver.</pre>
+
+      <h2>3 · Robô real <small>(opcional, Chrome/Edge)</small></h2>
+      <div class="row">
+        <button id="b-connect">Conectar ESP32</button>
+        <button id="b-send" disabled>Enviar ao robô</button>
+        <button id="b-stop" disabled>STOP</button>
+      </div>
+      <pre id="log"></pre>
+
+      <h2>4 · Realidade aumentada / virtual</h2>
+      <div class="row">
+        <button id="b-ar" disabled>AR</button>
+        <button id="b-vr" disabled>VR</button>
+      </div>
+      <small id="xr-note">Requer HTTPS e navegador compatível (Chrome Android para AR; Quest Browser para VR).</small>
+    </aside>
+  </main>
+
+  <dialog id="scan">
+    <div class="scanbox">
+      <div class="vwrap"><video id="video" playsinline muted></video><canvas id="guide"></canvas></div>
+      <p id="scan-msg"></p>
+      <div class="row">
+        <label>Atraso <input id="delay" type="number" min="2" max="30" value="6" /> s</label>
+        <button id="b-capture" class="primary">Capturar agora</button>
+        <button id="b-scan-cancel">Cancelar</button>
+      </div>
+      <div id="thumbs"></div>
+    </div>
+  </dialog>
+
+  <div id="xr-overlay" hidden>
+    <button id="xr-play">▶ / ⏸</button><button id="xr-step">⏭</button><button id="xr-reset">⏮</button>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
